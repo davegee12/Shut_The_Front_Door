@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html style="max-width: 375px;max-height: 650px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>googleextension (copy)</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_reg/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'login_reg/fonts/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'login_reg/css/gradient.css'%}">
+    <link rel="stylesheet" href="{% static 'login_reg/css/styles.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+</head>
+
+<body style="min-height: none;width: auto;max-height: 673px;height: auto;">
+    <div style="height: 49px;"><img class="d-inline-block" src="{% static 'login_reg/img/opened-door-aperture.png'%}"
+            style="width: 52px;margin-left: 15px;margin-top: -14px;">
+        <p class="d-inline-block"
+            style="font-size: 27px;letter-spacing: 8px;margin-left: 5px;margin-top: 0px;padding-top: 12px;">STFD</p><a
+            style="color: white;" href="/"><i class="fa fa-arrow-left"
+                style="font-size: 22px;margin-left: 157px;"></i></a>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <p class="error">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    <form action="create" method="POST"
+        style="height: 587px;width: 344px;margin: 15px;background-color: rgba(255,255,255,0.07);padding: 31px;opacity: 1;padding-top: 14px;">
+        <strong style="font-size: 28px;">register_</strong>
+        {% csrf_token %}
+        <div class="form-group justify-content-center" style="height: auto;margin-top: 21px;"><label
+                style="font-size: 19px;margin-left: 8px;margin-bottom: 5px;">first name</label><input
+                class="form-control" type="text"
+                style="opacity: 0.79;filter: grayscale(0%) saturate(102%);height: 36px;" name="first_name"><label
+                style="font-size: 19px;margin-left: 8px;margin-bottom: 5px;margin-top: 5px;">last name</label>
+            <input class="form-control" type="text"
+                style="opacity: 0.79;filter: grayscale(0%) saturate(102%);height: 36px;" name="last_name"><label
+                style="font-size: 19px;margin-left: 8px;margin-bottom: 5px;margin-top: 5px;">email</label><input
+                class="form-control" type="text"
+                style="opacity: 0.79;filter: grayscale(0%) saturate(102%);height: 36px;" name="email"><label
+                style="font-size: 19px;margin-left: 8px;margin-bottom: 5px;margin-top: 5px;">password</label>
+            <input class="form-control" type="password"
+                style="opacity: 0.79;filter: grayscale(0%) saturate(102%);height: 36px;" name="password"><label
+                style="font-size: 19px;margin-left: 8px;margin-bottom: 5px;margin-top: 5px;">verify</label><input
+                class="form-control" type="password"
+                style="opacity: 0.79;filter: grayscale(0%) saturate(102%);height: 36px;" name="pw_confirmation"><button
+                class="btn btn-primary text-center d-flex justify-content-center" type="submit"
+                style="margin: 12px;margin-right: auto;margin-left: auto;width: 117px;margin-top: 43px;height: 35px;padding-top: 3px;background-color: rgb(50,239,80);">register</button>
+            <p class="d-flex justify-content-center" style="margin-top: 27px;font-size: 14px;">your information will not
+                be shared</p>
+        </div>
+    </form>
+    <script src="{% static 'login_reg/js/jquery.min.js'%}"></script>
+    <script src="{% static 'login_reg/bootstrap/js/bootstrap.min.js'%}"></script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="max-width: 375px;max-height: 650px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Display Filters</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'filter/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'filter/fonts/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'filter/css/gradient.css'%}">
+    <link rel="stylesheet" href="{% static 'filter/css/styles.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+</head>
+
+<body style="min-height: none;width: auto;max-height: 673px;height: auto;">
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    <div style="height: 50px;"><img class="d-inline-block" src="{% static 'filter/img/opened-door-aperture.png'%}"
+            style="width: 52px;margin-left: 15px;margin-top: -14px;">
+        <p class="d-inline-block"
+            style="font-size: 27px;letter-spacing: 8px;margin-left: 5px;margin-top: 0px;padding-top: 12px;">STFD</p>
+        <a style="color: white;" href="/logout">
+            <i class="fa fa-sign-out" style="font-size: 22px;margin-left: 157px;"></i>
+        </a>
+    </div>
+    <form
+        style="height: 587px;width: 344px;margin: 15px;background-color: rgba(255,255,255,0.07);padding: 10px;opacity: 1;padding-top: 14px;">
+        <strong class="d-inline-block" style="font-size: 28px;margin-left: 12px;">FILTERING_</strong>
+        <a style="color: white;" href="/filter/display_create_filter">
+            <i class="fa fa-edit d-inline-block"
+                style="font-size: 37px;margin-left: 120px;height: auto;margin-top: 0;color: rgb(255,255,255);"></i>
+        </a>
+
+        <p style="margin-top: 17px;margin-bottom: 0;">FILTERED TITLE - DATE</p>
+        <div class="border rounded overflow-auto" style="height: 70px;margin: 0;margin-top: 0;">
+            {% for key in keywords %}
+            {% if logged_in.id == key.user_id.id %}
+            <ul>
+                <li>{{key.title_to_filter}} | {{key.filter_end_date | date:'M/d/y'}} | <a style="color: white;" href="delete_filter/{{key.id}}">Delete</a></li>
+            </ul>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <p style="margin-top: 17px;margin-bottom: 0;">GENRE</p>
+        <div class="border rounded overflow-auto" style="height: 40px;margin: 0;margin-top: 0;">
+            {% for key in keywords %}
+            <p>{{ key.genre_to_filter }}</p>
+            {% endfor %}
+        </div>
+        <p style="margin-top: 17px;margin-bottom: 0;">KEYWORDS</p>
+        <div class="border rounded overflow-auto" style="height: 290px;margin: 0;margin-top: 0;">
+            {% for key in keywords %}
+            {% if logged_in.id == key.user_id.id %}
+                <p>{{key.title_to_filter}}- <br> {{key.query_data}}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </form>
+    <script src="{% static 'filter/js/jquery.min.js'%}"></script>
+    <script src="{% static 'filter/bootstrap/js/bootstrap.min.js'%}"></script>
+</body>
+
+</html>

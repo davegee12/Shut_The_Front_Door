@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            display: inline-block;
+            border: solid 1px black;
+            height: 400px;
+            width: 300px;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+
+        form {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://png.pngtree.com/svg/20170321/6a0776ec9d.png" class="img-fluid mx-auto my-4 d-block"
+        style="width: 20%; height: 15%;" alt="this is logo">
+    <div class="row">
+        <div class="col-sm-12 mt-3">
+            <form action="create_filter" method="POST">
+                {% csrf_token %}
+                <div class="form-group justify-content-center">
+                    <label for="exampleInputEmail1">Title</label>
+                    <input type="text" class="form-control" name="title_to_filter" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Enter show or movie">
+                </div>
+                <div class="form-group justify-content-center">
+                    <fieldset>
+                        <label for="exampleInputEmail1">Genre</label>
+                        <select name="genre_to_filter">
+                            <option value="Select genre..." selected>Select genre...</option>
+                            <option value="Soap">Soap</option>
+                            <option value="Talk Show">Talk Show</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Horror">Horror</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="form-group justify-content-center">
+                    <label for="exampleInputEmail1">Date To Filter Until</label>
+                    <input type="date" class="form-control" name="filter_end_date" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+                <button type="submit" class=" mx-auto btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

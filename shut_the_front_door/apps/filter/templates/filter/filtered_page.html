@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="max-width: 375px;max-height: 650px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Create Filter</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_reg/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'login_reg/fonts/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'login_reg/css/gradient.css'%}">
+    <link rel="stylesheet" href="{% static 'login_reg/css/styles.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+</head>
+
+<body style="min-height: none;width: auto;max-height: 673px;height: auto;">
+    <div style="height: 49px;"><img class="d-inline-block" src="{% static 'login_reg/img/opened-door-aperture.png'%}"
+            style="width: 52px;margin-left: 15px;margin-top: -14px;">
+        <p class="d-inline-block"
+            style="font-size: 27px;letter-spacing: 8px;margin-left: 5px;margin-top: 0px;padding-top: 12px;">STFD</p><a
+            style="color: white;" href="/filter"><i class="fa fa-arrow-left"
+                style="font-size: 22px;margin-left: 157px;"></i></a>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    <form action="create_filter" method="POST"
+        style="height: 587px;width: 344px;margin: 15px;background-color: rgba(255,255,255,0.07);padding: 31px;opacity: 1;padding-top: 14px;">
+        <strong style="font-size: 28px;">SPOILER ALERT_</strong>
+        {% csrf_token %}
+        <div class="form-group justify-content-center" style="height: auto;margin-top: 21px;">
+            <label style="font-size: 19px;margin-left: 8px;margin-bottom: 5px;margin-top: 5px;">keyword to
+                filter</label>
+            <input class="form-control" type="text"
+                style="opacity: 0.79;filter: grayscale(0%) saturate(102%);height: 36px;" name="title_to_filter" placeholder="Enter keyword to filter">
+            <fieldset>
+                <label class="d-block"
+                    style="font-size: 19px;margin-left: 8px;margin-bottom: 5px;margin-top: 5px;">genre to filter</label>
+                <select
+                    style="opacity: 0.79;filter: grayscale(0%) saturate(102%);height: 36px; width: 282px; background-color:  white;"
+                    name="genre_to_filter">
+                    <option value="Select genre..." selected>Select genre...</option>
+                    <option value="Soap">Soap</option>
+                    <option value="Talk Show">Talk Show</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Horror">Horror</option>
+                </select>
+            </fieldset>
+            <label class="d-block" style="font-size: 19px;margin-left: 8px;margin-bottom: 5px;margin-top: 5px;">filter
+                until</label>
+            <input name="filter_end_date" class="form-control" type="date"
+                style="opacity: 0.79;filter: grayscale(0%) saturate(102%);height: 36px;">
+            <button class="btn btn-primary text-center d-flex justify-content-center" type="submit"
+                style="margin: 12px;margin-right: auto;margin-left: auto;width: 117px;margin-top: 43px;height: 35px;padding-top: 3px;background-color: rgb(50,239,80);">filter</button>
+        </div>
+    </form>
+    <script src="{% static 'login_reg/js/jquery.min.js'%}"></script>
+    <script src="{% static 'login_reg/bootstrap/js/bootstrap.min.js'%}"></script>
+</body>
+
+</html>
